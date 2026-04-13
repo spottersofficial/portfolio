@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>김준철 포트폴리오 | 크레이버코퍼레이션 전략기획팀 경영관리 파트장</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;900&display=swap');
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --black: #111111;
+    --dark: #1f1f1f;
+    --mid: #555555;
+    --light: #888888;
+    --border: #dddddd;
+    --bg: #f8f8f8;
+    --accent: #111111;
+    --white: #ffffff;
+    --highlight: #f0f0f0;
+  }
+  body { font-family: 'Noto Sans KR', 'Apple SD Gothic Neo', sans-serif; background: var(--white); color: var(--dark); line-height: 1.7; font-size: 14px; }
+  .page { max-width: 900px; margin: 0 auto; padding: 0 32px; }
+
+  /* HERO */
+  .hero { background: var(--black); color: var(--white); padding: 80px 0 60px; margin-bottom: 0; }
+  .hero .page { display: flex; justify-content: space-between; align-items: flex-end; }
+  .hero-left {}
+  .hero-tag { font-size: 11px; letter-spacing: 3px; text-transform: uppercase; color: #aaaaaa; margin-bottom: 20px; }
+  .hero-name { font-size: 54px; font-weight: 900; letter-spacing: -1px; line-height: 1.1; margin-bottom: 16px; }
+  .hero-title { font-size: 18px; font-weight: 400; color: #cccccc; margin-bottom: 8px; }
+  .hero-target { font-size: 14px; color: #888888; }
+  .hero-contact { text-align: right; }
+  .hero-contact p { font-size: 13px; color: #aaaaaa; margin-bottom: 6px; }
+  .hero-contact a { color: #cccccc; text-decoration: none; }
+
+  /* NAV BAR */
+  .navbar { background: var(--dark); position: sticky; top: 0; z-index: 100; border-bottom: 1px solid #333; }
+  .navbar .page { display: flex; gap: 0; }
+  .navbar a { display: inline-block; padding: 14px 20px; font-size: 12px; letter-spacing: 1px; color: #999; text-decoration: none; transition: color 0.2s; }
+  .navbar a:hover { color: white; }
+
+  /* SECTION */
+  .section { padding: 60px 0; border-bottom: 1px solid var(--border); }
+  .section:last-child { border-bottom: none; }
+  .section-header { display: flex; align-items: baseline; gap: 16px; margin-bottom: 40px; }
+  .section-num { font-size: 11px; letter-spacing: 2px; color: var(--light); font-weight: 500; }
+  .section-title { font-size: 28px; font-weight: 900; letter-spacing: -0.5px; }
+
+  /* KPI CARDS */
+  .kpi-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-bottom: 40px; }
+  .kpi-card { background: var(--black); color: var(--white); padding: 28px 20px; border-radius: 4px; }
+  .kpi-num { font-size: 36px; font-weight: 900; line-height: 1; margin-bottom: 8px; }
+  .kpi-unit { font-size: 16px; font-weight: 400; color: #aaa; }
+  .kpi-label { font-size: 12px; color: #888; margin-top: 8px; line-height: 1.4; }
+
+  /* SKILLS GRID */
+  .skills-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 2px; background: var(--border); margin-bottom: 0; }
+  .skill-item { background: var(--white); padding: 20px 24px; }
+  .skill-name { font-size: 13px; font-weight: 700; color: var(--dark); margin-bottom: 6px; }
+  .skill-bar-wrap { background: var(--bg); height: 4px; border-radius: 2px; margin-bottom: 6px; }
+  .skill-bar { background: var(--black); height: 4px; border-radius: 2px; }
+  .skill-desc { font-size: 12px; color: var(--light); }
+
+  /* CAREER TIMELINE */
+  .career-item { display: grid; grid-template-columns: 200px 1fr; gap: 32px; margin-bottom: 48px; padding-bottom: 48px; border-bottom: 1px solid var(--border); }
+  .career-item:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+  .career-left { }
+  .career-company { font-size: 15px; font-weight: 700; color: var(--dark); margin-bottom: 4px; }
+  .career-period { font-size: 12px; color: var(--light); margin-bottom: 4px; }
+  .career-rank { font-size: 12px; color: var(--mid); font-weight: 500; }
+  .career-right {}
+  .career-dept { font-size: 13px; font-weight: 700; color: var(--dark); margin-bottom: 12px; border-left: 3px solid var(--black); padding-left: 12px; }
+  .career-duties { list-style: none; margin-bottom: 16px; }
+  .career-duties li { font-size: 13px; color: var(--mid); padding: 3px 0 3px 14px; position: relative; }
+  .career-duties li::before { content: "•"; position: absolute; left: 0; color: var(--light); }
+  .project-box { background: var(--bg); border-left: 3px solid var(--black); padding: 16px 20px; margin-top: 16px; }
+  .project-title { font-size: 13px; font-weight: 700; color: var(--dark); margin-bottom: 8px; }
+  .project-items { list-style: none; }
+  .project-items li { font-size: 12px; color: var(--mid); padding: 2px 0 2px 16px; position: relative; }
+  .project-items li::before { content: "–"; position: absolute; left: 0; color: var(--light); }
+  .project-result { margin-top: 10px; font-size: 12px; font-weight: 700; color: var(--dark); background: var(--black); color: var(--white); display: inline-block; padding: 4px 12px; border-radius: 2px; }
+
+  /* PROJECTS / ACHIEVEMENTS */
+  .achievement-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+  .achievement-card { border: 1px solid var(--border); padding: 24px; }
+  .ach-tag { font-size: 10px; letter-spacing: 2px; text-transform: uppercase; color: var(--light); margin-bottom: 12px; }
+  .ach-title { font-size: 15px; font-weight: 700; color: var(--dark); margin-bottom: 12px; line-height: 1.4; }
+  .ach-result { font-size: 22px; font-weight: 900; color: var(--black); margin-bottom: 4px; }
+  .ach-desc { font-size: 12px; color: var(--light); line-height: 1.5; }
+
+  /* WHY CRAVER */
+  .why-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+  .why-card { padding: 28px 24px; border-top: 3px solid var(--black); }
+  .why-num { font-size: 32px; font-weight: 900; color: var(--border); margin-bottom: 12px; }
+  .why-title { font-size: 15px; font-weight: 700; color: var(--dark); margin-bottom: 10px; }
+  .why-desc { font-size: 13px; color: var(--mid); line-height: 1.6; }
+
+  /* FOOTER */
+  .footer { background: var(--black); color: #666; text-align: center; padding: 40px 0; font-size: 12px; }
+  .footer strong { color: #aaa; }
+
+  @media print {
+    .navbar { display: none; }
+    .hero { padding: 40px 0 30px; }
+    .section { padding: 30px 0; }
+  }
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="page">
+    <div class="hero-left">
+      <div class="hero-tag">Portfolio · 2026.04</div>
+      <div class="hero-name">김준철</div>
+      <div class="hero-title">FP&A · 경영기획 · 관리회계 전문가</div>
+      <div class="hero-target">지원 : ㈜크레이버코퍼레이션 전략기획팀 경영관리 파트장</div>
+    </div>
+    <div class="hero-contact">
+      <p>📱 010-5444-0915</p>
+      <p>✉️ skytonic@gmail.com</p>
+      <p>🌐 spottr.kr</p>
+      <p>홍익대학교 경영학과 졸업</p>
+      <p style="margin-top:12px; font-size:18px; font-weight:700; color:white;">총 경력 14년 8개월</p>
+    </div>
+  </div>
+</div>
+
+<!-- NAVBAR -->
+<nav class="navbar">
+  <div class="page">
+    <a href="#kpi">핵심 성과</a>
+    <a href="#skills">보유 역량</a>
+    <a href="#career">경력 요약</a>
+    <a href="#projects">주요 프로젝트</a>
+    <a href="#why">지원 이유</a>
+  </div>
+</nav>
+
+<!-- SECTION 1: KPI -->
+<div class="section" id="kpi">
+  <div class="page">
+    <div class="section-header">
+      <span class="section-num">01</span>
+      <span class="section-title">핵심 정량 성과</span>
+    </div>
+    <div class="kpi-grid">
+      <div class="kpi-card">
+        <div class="kpi-num">+10<span class="kpi-unit">%p</span></div>
+        <div class="kpi-label">영업 ROI 개선<br><span style="color:#666; font-size:11px;">건일제약 | 2023</span></div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-num">-5<span class="kpi-unit">%p</span></div>
+        <div class="kpi-label">제품 원가율 절감<br><span style="color:#666; font-size:11px;">건일제약 | 2022</span></div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-num">3<span class="kpi-unit">개국</span></div>
+        <div class="kpi-label">글로벌 FP&A 구축<br><span style="color:#666; font-size:11px;">오픈헬스케어 | 2024</span></div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-num">-1<span class="kpi-unit">개월</span></div>
+        <div class="kpi-label">사업계획 일정 단축<br><span style="color:#666; font-size:11px;">건일제약 | 2021</span></div>
+      </div>
+    </div>
+    <div class="kpi-grid" style="margin-bottom:0;">
+      <div class="kpi-card">
+        <div class="kpi-num">10<span class="kpi-unit">일</span></div>
+        <div class="kpi-label">해외법인 손익 레포팅<br><span style="color:#666; font-size:11px;">영업일 이내 / 3개국 동시</span></div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-num">15<span class="kpi-unit">년</span></div>
+        <div class="kpi-label">FP&A / 경영기획 경력<br><span style="color:#666; font-size:11px;">제약·골프·의료·건강기능식품</span></div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-num">ERP<span class="kpi-unit"> ×2</span></div>
+        <div class="kpi-label">Oracle Cloud + SAP CO<br><span style="color:#666; font-size:11px;">구축 PMO 및 전문 운영</span></div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-num">3<span class="kpi-unit">회</span></div>
+        <div class="kpi-label">적자→흑자 전환 기여<br><span style="color:#666; font-size:11px;">원가·손익·예산 구조 개선</span></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- SECTION 2: SKILLS -->
+<div class="section" id="skills">
+  <div class="page">
+    <div class="section-header">
+      <span class="section-num">02</span>
+      <span class="section-title">보유 역량</span>
+    </div>
+    <div class="skills-grid">
+      <div class="skill-item">
+        <div class="skill-name">FP&A / 관리회계</div>
+        <div class="skill-bar-wrap"><div class="skill-bar" style="width:97%"></div></div>
+        <div class="skill-desc">전사 사업계획·손익분석·예산관리·원가관리 전반 15년 수행. 관리·재무·원가·세무회계 전 영역 경험.</div>
+      </div>
+      <div class="skill-item">
+        <div class="skill-name">경영진 보고체계 (CEO/CFO/이사회)</div>
+        <div class="skill-bar-wrap"><div class="skill-bar" style="width:95%"></div></div>
+        <div class="skill-desc">이사회·주총·CEO/CFO 보고 자료 작성, 월간·분기·연간 경영실적 리뷰 운영. 주요 회의체 총괄.</div>
+      </div>
+      <div class="skill-item">
+        <div class="skill-name">글로벌 FP&A</div>
+        <div class="skill-bar-wrap"><div class="skill-bar" style="width:85%"></div></div>
+        <div class="skill-desc">미국·카자흐스탄·베트남 3개 해외법인 관리손익 시스템 구축·운영. DCF Valuation, WACC 분석.</div>
+      </div>
+      <div class="skill-item">
+        <div class="skill-name">ERP 구축·운영 (Oracle / SAP)</div>
+        <div class="skill-bar-wrap"><div class="skill-bar" style="width:90%"></div></div>
+        <div class="skill-desc">Oracle Cloud ERP PMO (All Module Superuser), SAP CO 모듈 전담 구축·운영 (SAP KOREA 전문가 과정).</div>
+      </div>
+      <div class="skill-item">
+        <div class="skill-name">사업구조 / 수익성 분석</div>
+        <div class="skill-bar-wrap"><div class="skill-bar" style="width:93%"></div></div>
+        <div class="skill-desc">채널·브랜드·품목별 손익구조 분석, ROI 기반 의사결정 지원, 비용구조 설계 및 개선.</div>
+      </div>
+      <div class="skill-item">
+        <div class="skill-name">PMO / 프로젝트 관리</div>
+        <div class="skill-bar-wrap"><div class="skill-bar" style="width:80%"></div></div>
+        <div class="skill-desc">전사 주요 프로젝트 PMO, KPI 목표 관리, 회의체 운영 및 실행 과제 연계.</div>
+      </div>
+      <div class="skill-item">
+        <div class="skill-name">M&A / 기업가치 평가</div>
+        <div class="skill-bar-wrap"><div class="skill-bar" style="width:75%"></div></div>
+        <div class="skill-desc">신사업 타당성 검토, DCF·WACC 분석, 계열사 관리, 해외 Joint Venture 지원.</div>
+      </div>
+      <div class="skill-item">
+        <div class="skill-name">Excel (고급) / PPT / SQL</div>
+        <div class="skill-bar-wrap"><div class="skill-bar" style="width:88%"></div></div>
+        <div class="skill-desc">고급 함수·피벗·자동화 활용 상급. SQL 스터디 진행 중. 개인 플랫폼(spottr.kr) 직접 개발·운영.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- SECTION 3: CAREER -->
+<div class="section" id="career">
+  <div class="page">
+    <div class="section-header">
+      <span class="section-num">03</span>
+      <span class="section-title">경력 요약</span>
+    </div>
+
+    <div class="career-item">
+      <div class="career-left">
+        <div class="career-company">㈜종근당건강</div>
+        <div class="career-period">2025.11 ~ 2026.03 (5개월)</div>
+        <div class="career-rank">차장 | 팀장</div>
+      </div>
+      <div class="career-right">
+        <div class="career-dept">사업관리팀 | 경영기획·관리손익</div>
+        <ul class="career-duties">
+          <li>연간·중장기 사업계획 수립, 채널·품목별 관리손익 레포팅 운영</li>
+          <li>이사회·주총·주간/월간/분기 주요 회의체 보고 자료 작성 및 경영진 보고</li>
+          <li>이사회 운영 프로세스 전면 개편 (Governance 강화 프로젝트)</li>
+          <li>IR 자료 작성, 환경분석 및 M&A 기초 검토</li>
+        </ul>
+        <div class="project-box">
+          <div class="project-title">▪ 이사회 Governance 프로세스 강화</div>
+          <div class="project-result">→ 이사회 월간 정례화, 거버넌스 투명성 제고</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="career-item">
+      <div class="career-left">
+        <div class="career-company">㈜오픈헬스케어</div>
+        <div class="career-period">2024.09 ~ 2025.11 (1년 2개월)</div>
+        <div class="career-rank">차장</div>
+      </div>
+      <div class="career-right">
+        <div class="career-dept">경영기획실 | 글로벌 FP&A</div>
+        <ul class="career-duties">
+          <li>사업계획 수립, 해외 3개법인 관리손익 시스템 구축·운영 (미국·카자흐스탄·베트남)</li>
+          <li>글로벌 레포팅 시스템 구축 및 협업 체계 정립</li>
+          <li>DCF Valuation, WACC 분석을 통한 법인 가치평가</li>
+          <li>전결규정 셋팅 및 PI (글로벌 통합 업무체계 정립)</li>
+        </ul>
+        <div class="project-box">
+          <div class="project-title">▪ 해외법인 관리손익 시스템 3개국 동시 구축 (3개월)</div>
+          <div class="project-result">→ 영업일 10일 이내 손익 레포팅 운영단계 전환</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="career-item">
+      <div class="career-left">
+        <div class="career-company">㈜건일제약</div>
+        <div class="career-period">2019.08 ~ 2024.09 (5년 1개월)</div>
+        <div class="career-rank">팀원</div>
+      </div>
+      <div class="career-right">
+        <div class="career-dept">재무팀 | FP&A·관리회계 전담</div>
+        <ul class="career-duties">
+          <li>전사 중장기·단기 경영기획 및 전략수립, KPI 목표 관리</li>
+          <li>예산·원가 관리 (SAP CO 전담), 사업계획·투자 타당성 분석</li>
+          <li>회계감사 대응, 세무조사 대응 (1회), CEO/CFO 보고</li>
+        </ul>
+        <div class="project-box">
+          <div class="project-title">▪ 영업 KPI 재설정 · 원가 절감 · 예산 효율화 3대 프로젝트</div>
+          <div class="project-result">→ 영업 ROI +10%p / 원가율 -5%p / 사업계획 1개월 단축</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="career-item">
+      <div class="career-left">
+        <div class="career-company">마제스티골프코리아</div>
+        <div class="career-period">2014.01 ~ 2019.07 (5년 7개월)</div>
+        <div class="career-rank">대리</div>
+      </div>
+      <div class="career-right">
+        <div class="career-dept">기획관리팀 | 전략기획·해외법인관리</div>
+        <ul class="career-duties">
+          <li>전사 경영기획·전략수립, KPI 목표 관리, 해외 자회사 Financial Plan Pack</li>
+          <li>Oracle Cloud ERP 구축 PMO (All Module Superuser, Product Cost Manager)</li>
+          <li>중국법인 Contingency Plan 수립·실행 (직접 출장·합숙)</li>
+          <li>IPO 검토, 계열사 순환출자 검토, 의류 라이선싱 신사업 기획</li>
+        </ul>
+        <div class="project-box">
+          <div class="project-title">▪ Oracle Cloud ERP PMO 전사 구축</div>
+          <div class="project-result">→ 업무효율 증대, 위조품·병행수입 문제 해소</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="career-item">
+      <div class="career-left">
+        <div class="career-company">㈜와이드 (WIDE)</div>
+        <div class="career-period">2011.07 ~ 2013.12 (2년 6개월)</div>
+        <div class="career-rank">사원</div>
+      </div>
+      <div class="career-right">
+        <div class="career-dept">재무기획팀 | 재무회계·결산</div>
+        <ul class="career-duties">
+          <li>법인 결산, P&L·B/S·MCS 작성, 자금·세무·감사</li>
+          <li>전사 KPI 목표 관리</li>
+        </ul>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- SECTION 4: PROJECTS -->
+<div class="section" id="projects">
+  <div class="page">
+    <div class="section-header">
+      <span class="section-num">04</span>
+      <span class="section-title">주요 프로젝트 성과</span>
+    </div>
+    <div class="achievement-grid">
+      <div class="achievement-card">
+        <div class="ach-tag">건일제약 · 2023</div>
+        <div class="ach-title">영업 KPI 재설정 및 수익성 개선</div>
+        <div class="ach-result">ROI +10%p</div>
+        <div class="ach-desc">ROI 기반 인센티브 개편, 품목별 할인율·여신 Logic 명문화. 영업 ROI 20%대 → 30%대 달성.</div>
+      </div>
+      <div class="achievement-card">
+        <div class="ach-tag">건일제약 · 2022</div>
+        <div class="ach-title">원가 절감 프로젝트</div>
+        <div class="ach-result">원가율 -5%p</div>
+        <div class="ach-desc">공장 합숙 표준공수 재측정, 시계열 원가 분석, 수직계열화 검토. 수익성 낮은 공정 폐쇄.</div>
+      </div>
+      <div class="achievement-card">
+        <div class="ach-tag">건일제약 · 2021</div>
+        <div class="ach-title">예산 자동배분 Logic 구현</div>
+        <div class="ach-result">일정 1개월 단축</div>
+        <div class="ach-desc">매출계획 기반 본부·팀·계정별 예산 자동배분 Logic 설계. 예산편성 Argue 제거.</div>
+      </div>
+      <div class="achievement-card">
+        <div class="ach-tag">오픈헬스케어 · 2024</div>
+        <div class="ach-title">글로벌 FP&A 시스템 구축</div>
+        <div class="ach-result">3개국 · 10일 이내</div>
+        <div class="ach-desc">미국·카자흐스탄·베트남 3개법인 관리손익 시스템 3개월 내 구축. 영업일 10일 이내 레포팅 정착.</div>
+      </div>
+      <div class="achievement-card">
+        <div class="ach-tag">마제스티 · 2018</div>
+        <div class="ach-title">Oracle Cloud ERP 전사 구축 PMO</div>
+        <div class="ach-result">All Module 완료</div>
+        <div class="ach-desc">PMO Manager + Product Cost Manager 겸임. 해외법인 통합, 위조품 Serial 통제 실현.</div>
+      </div>
+      <div class="achievement-card">
+        <div class="ach-tag">마제스티 · 2016</div>
+        <div class="ach-title">중국법인 Contingency Plan</div>
+        <div class="ach-result">적자폭 1/3 축소</div>
+        <div class="ach-desc">현지 합숙 사업계획 수립, 고가→중저가 전략 전환. 지사 1개소 폐쇄, 재고회전일 3개월 단축.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- SECTION 5: WHY CRAVER -->
+<div class="section" id="why">
+  <div class="page">
+    <div class="section-header">
+      <span class="section-num">05</span>
+      <span class="section-title">크레이버코퍼레이션에 지원한 이유</span>
+    </div>
+    <div class="why-grid">
+      <div class="why-card">
+        <div class="why-num">01</div>
+        <div class="why-title">폭발적 성장의 내실을 다지는 역할</div>
+        <div class="why-desc">2021년 260억 → 2025년 6,600억. 이 성장을 지속하려면 경영관리 인프라가 뒤따라야 합니다. 손익구조 가시화·사업계획 실행력 강화·PMO 체계화로 성장을 내부에서 뒷받침하겠습니다.</div>
+      </div>
+      <div class="why-card">
+        <div class="why-num">02</div>
+        <div class="why-title">글로벌 K-뷰티 시장의 FP&A</div>
+        <div class="why-desc">해외 3개국 법인 관리손익 구축 경험과 글로벌 레포팅 운영 노하우를 바탕으로, 크레이버의 글로벌 채널·시장별 수익성 분석과 의사결정 지원에 즉시 기여할 수 있습니다.</div>
+      </div>
+      <div class="why-card">
+        <div class="why-num">03</div>
+        <div class="why-title">Speed·Tenacity 문화와의 적합성</div>
+        <div class="why-desc">정직한 소통과 정량적 논거 기반의 의사결정. 숫자 너머의 사업 맥락을 함께 읽고, 빠른 실행으로 연결하는 것이 저의 일하는 방식입니다. 크레이버의 가치와 정확히 맞닿아 있습니다.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<div class="footer">
+  <div class="page">
+    <strong>김준철</strong> · 010-5444-0915 · skytonic@gmail.com · spottr.kr<br>
+    <span style="margin-top:8px; display:block;">㈜크레이버코퍼레이션 전략기획팀 경영관리 파트장 지원 | 2026. 04</span>
+  </div>
+</div>
+
+</body>
+</html>
